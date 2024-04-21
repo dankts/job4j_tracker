@@ -27,7 +27,33 @@ public class StartUI {
                 } else {
                     System.out.println("Хранилище еще не содержит заявок");
                 }
-            } else if (select == 6) {
+            } else if (select == 2) {
+                System.out.println("=== Edit item ===");
+                System.out.print("Enter id: ");
+                int enterId = Integer.parseInt(scanner.nextLine());
+                System.out.print("Enter name: ");
+                String name = scanner.nextLine();
+                Item item = new Item(name);
+                if (tracker.replace(enterId, item)) {
+                    System.out.println("Заявка изменена успешно.");
+                } else {
+                    System.out.println("Ошибка замены заявки.");
+                }
+            } else if (select == 3) {
+                System.out.println("=== Удаление заявки ===");
+                System.out.print("Введите id: ");
+                int enterId = Integer.parseInt(scanner.nextLine());
+                Item item = tracker.findById(enterId);
+                tracker.delete(enterId);
+                System.out.println(item != null ? "Заявка удалена успешно." : "Ошибка удаления заявки.");
+            } else if (select == 4) {
+                System.out.println("=== Вывод заявки по id ===");
+                System.out.print("Введите id: ");
+                int enterId = Integer.parseInt(scanner.nextLine());
+                Item item = tracker.findById(enterId);
+                System.out.println(item != null ? item : "Заявка с введенным id: " + enterId + " не найдена.");
+            }
+            else if (select == 6) {
                 run = false;
             }
         }
