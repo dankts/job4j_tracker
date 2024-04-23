@@ -2,6 +2,12 @@ package ru.job4j.tracker;
 
 public class FindByIdAction implements UserAction {
 
+    private final Output output;
+
+    public FindByIdAction(Output output) {
+        this.output = output;
+    }
+
     @Override
     public String name() {
         return "Показать заявку по id";
@@ -9,10 +15,10 @@ public class FindByIdAction implements UserAction {
 
     @Override
     public boolean execute(Input input, Tracker tracker) {
-        System.out.println("=== Вывод заявки по id ===");
+        output.println("=== Вывод заявки по id ===");
         int enterId = input.askInt("Введите id: ");
         Item item = tracker.findById(enterId);
-        System.out.println(item != null ? item : "Заявка с введенным id: " + enterId + " не найдена.");
+        output.println(item != null ? item : "Заявка с введенным id: " + enterId + " не найдена.");
         return true;
     }
 }
