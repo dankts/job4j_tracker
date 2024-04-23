@@ -10,8 +10,8 @@ public class College {
         student.setGroup("4-23");
         student.setDateOfEntered(new Date());
 
-        System.out.println(student.getFullName() +
-                " " + student.getGroup() +
-                " " + student.getDateOfEntered());
+        System.out.println(student.getFullName()
+                + " " + student.getGroup()
+                + " " + student.getDateOfEntered());
     }
 }
